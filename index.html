@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+<head>
+	<title>Conversor de tempo</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="Horas_files/convert.js"></script>
+	<script type="text/javascript">
+		if (top.location != location)
+			top.location.href = document.location.href;
+		var aR = new Image();
+		var aD = new Image();
+		var iL = new Image();
+		aR.src = 'http://static.convertworld.com/images/right_bw.gif';
+		aD.src = 'http://static.convertworld.com/images/down_bw.gif';
+		iL.src = 'http://static.convertworld.com/images/loading.gif';
+		var h = 'www.convertworld.com';
+		var l = '/pt/';
+		var p = '';
+		var la = 'pt';
+		var t = 'yb';
+		var nT = '';
+		var nD = ',';
+	</script>
+	<style type="text/css">
+		body {font-family: Arial, Helvetica, sans-serif;font-size: 13px;color: #333;
+		}
+		h1 {margin-top: 15px;font-size: 25px;font-weight: bold;color: #FFF;}
+		.unit_group_container ul {list-style: none;padding: 0;margin: 0;}
+			.unit_group_container ul > li {list-style: none;padding: 5px;margin: 0;}
+				li.li1 {background-color: #EFEFEF;}
+				li.li2 {background-color: #FFF;}
+				.unit_name {float: left;width: 130px;}
+	</style>
+</head>
+<body>
+	<h1>Conversor de unidades</h1>
+	
+	<form id="conv_time_ext" action="/pt/tempo/Horas.html" onsubmit="execute_time_ext(true); return false;" method="post">
+
+		Quero converter:
+		<p>
+			<input value="1" name="amount" style="text-align: right;" onchange="execute_time_ext(true);" onkeyup="execute_time_ext(true);" type="text" />
+
+			<select name="unit_from" onchange="execute_time_ext(true);">
+				<option value="1|0|year">Anos</option>
+				<option value="12|0|month">Meses</option>
+				<option value="52,17857|0|week">Semanas</option>
+				<option value="365.25|0|day">Dias</option>
+				<option value="8766|0|hour">Horas</option>
+				<option value="525960|0|minute">Minutos (minute)</option>
+				<option value="3,155760e7|0|s" selected="selected">Segundos (s)</option>
+				<option value="3,155760e10|0|ms">Milissegundo (ms)</option>
+				<option value="3,155760e13|0|µs">Microsegundos (µs)</option>
+				<option value="3,155760e16|0|ns">Nanosegundos (ns)</option>
+			</select>
+
+			<select name="decimals" onchange="execute_time_ext(true);">
+				<option value="0">0 decimais</option>
+				<option value="1">1 decimais</option>
+				<option value="2" selected="selected">2 decimais</option>
+				<option value="3">3 decimais</option>
+				<option value="4">4 decimais</option>
+				<option value="5">5 decimais</option>
+				<option value="6">6 decimais</option>
+				<option value="7">7 decimais</option>
+				<option value="8">8 decimais</option>
+				<option value="9">9 decimais</option>
+				<option value="10">10 decimais</option>
+			</select>
+		</p>
+	</form>
+
+	<div class="unit_group_container">
+		
+		<ul>
+			<li class="li1">
+				<div class="unit_even">
+					<div class="unit_name">Anos</div>
+					<div id="value_1" class="unit_number">1,14×10<sup>-4</sup></div>
+					<input name="unit" value="1|0|1" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li2">
+				<div class="unit_odd">
+					<div class="unit_name">Meses</div>
+					<div id="value_2" class="unit_number">1,37×10<sup>-3</sup></div>
+					<input name="unit" value="12|0|2" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li1">
+				<div class="unit_even">
+					<div class="unit_name">Semanas</div>
+					<div id="value_3" class="unit_number">0,01</div>
+					<input name="unit" value="52,17857|0|3" type="hidden">
+				</div>
+			</li>
+			
+			<li class="li2">
+				<div class="unit_odd">
+					<div class="unit_name">Dias</div>
+					<div id="value_4" class="unit_number">0,04</div>
+					<input name="unit" value="365.25|0|4" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li1">
+				<div class="unit_even">
+					<div class="unit_name">Horas</div>
+					<div id="value_5" class="unit_number">1</div>
+					<input name="unit" value="8766|0|5" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li2">
+				<div class="unit_odd">
+					<div class="unit_name">Minutos</div>
+					<div id="value_6" class="unit_number">60</div>
+					<input name="unit" value="525960|0|6" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li1">
+				<div class="unit_even">
+					<div class="unit_name">Segundos</div>
+					<div id="value_7" class="unit_number">3600</div>
+					<input name="unit" value="3,155760e7|0|7" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li2">
+				<div class="unit_odd">
+					<div class="unit_name">Milissegundo</div>
+					<div id="value_8" class="unit_number">3600000</div>
+					<input name="unit" value="3,155760e10|0|8" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li1">
+				<div class="unit_even">
+					<div class="unit_name">Microsegundos</div>
+					<div id="value_9" class="unit_number">3600000000</div>
+					<input name="unit" value="3,155760e13|0|9" type="hidden">
+				</div>
+			</li>
+				
+			<li class="li2">
+				<div class="unit_odd">
+					<div class="unit_name">Nanosegundos</div>
+					<div id="value_10" class="unit_number">3,6×10<sup>12</sup></div>
+					<input name="unit" value="3,155760e16|0|10" type="hidden">
+				</div>
+			</li>
+		
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		function execute_time_ext(clicked) {
+			if (document.forms && document.forms['conv_time_ext']) {
+				var from = document.forms['conv_time_ext'].unit_from.value;
+				var elms = document.getElementsByName('unit');
+				var amount = document.forms['conv_time_ext'].amount.value;
+				var decimals = document.forms['conv_time_ext'].decimals.value;
+				var to;
+				var amount_int = amount - 0;
+				for (var i = 0; i < elms.length; i++) {
+					to = elms[i].value;
+					convert(amount, from, to, false, false, decimals);
+				}
+				var cookie = 'default_decimals';
+				if (getCookie(cookie) != decimals) {
+					setCookie(cookie, decimals, null, '/');
+				}
+			} else {
+				if (clicked)
+					alert('Erro de conversão. A conversão não foi suportada pelo seu browser.');
+			}
+		}
+		execute_time_ext(false);
+	</script>
+
+</body>
+</html>
